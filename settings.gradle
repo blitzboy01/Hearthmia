@@ -1,1 +1,1 @@
-include ':app', ':mylibrary', ':ecgapp'
+include ':app', ':mylibrary'
