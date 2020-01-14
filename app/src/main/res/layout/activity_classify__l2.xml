@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Classify.Classify_L2">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/selected_image1"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label1"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="130dp"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/button"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image2"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+
+            <TextView
+                android:id="@+id/label2"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="137dp"
+                android:layout_height="5dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image3"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+
+            <TextView
+                android:id="@+id/label3"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image4"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label4"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image5"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label5"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image6"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label6"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn6"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image7"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label7"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn7"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image8"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label8"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn8"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image9"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label9"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn9"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image10"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label10"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn10"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image11"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label11"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn11"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@+id/selected_image12"
+                android:layout_width="260dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/label12"
+                android:layout_width="108dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn12"
+                android:layout_width="109dp"
+                android:layout_height="7dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/labelCategory"
+                android:layout_width="403dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnCategory"
+                android:layout_width="108dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button"
+                android:text="CATEGORIZE"
+                android:textAllCaps="false"
+                android:textColor="@color/white_red"
+                android:textSize="15dp" />
+
+
+            <Button
+                android:id="@+id/upload_btn"
+                android:layout_width="108dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button"
+                android:text="UPLOAD"
+                android:textAllCaps="false"
+                android:textColor="@color/white_red"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/history_btn"
+                android:layout_width="108dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button"
+                android:text="History"
+                android:textAllCaps="false"
+                android:textColor="@color/white_red"
+                android:textSize="15dp" />
+
+
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="108dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/button"
+                android:text="BACK"
+                android:textAllCaps="false"
+                android:textColor="@color/white_red"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

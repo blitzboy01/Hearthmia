@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mob_navigation"
+    app:startDestination="@+id/nav_home">
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.soumio.inceptiontutorial.Home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_profile"
+            app:destination="@id/nav_profile"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_about"
+            app:destination="@id/nav_about"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_ecgbasics"
+            app:destination="@id/nav_ecgbasics"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_analyze"
+            app:destination="@id/nav_analyze"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_analyze"
+        android:name="com.soumio.inceptiontutorial.Analyze.ChooseModel"
+        android:label="Please Insert 12-Lead Here"
+        tools:layout="@layout/activity_choose_model" />
+
+    <fragment
+        android:id="@+id/nav_ecgbasics"
+        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment1"
+        android:label="ECG Basic 1"
+        tools:layout="@layout/fragment_ecg_basics_1">
+        <action
+            android:id="@+id/action_nav_ecgbasics_to_nav_ecgbasics2"
+            app:destination="@id/nav_ecgbasics2"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_ecgbasics2"
+        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment2"
+        android:label="ECG Basic 2"
+        tools:layout="@layout/fragment_ecg_basics_2">
+        <action
+            android:id="@+id/action_nav_ecgbasics2_to_nav_ecgbasics3"
+            app:destination="@id/nav_ecgbasics3"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_ecgbasics3"
+        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment3"
+        android:label="ECG Basic 3"
+        tools:layout="@layout/fragment_ecg_basics_3">
+        <action
+            android:id="@+id/action_nav_ecgbasics3_to_nav_ecgbasics4"
+            app:destination="@id/nav_ecgbasics4"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_ecgbasics4"
+        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment4"
+        android:label="ECG Basic 4"
+        tools:layout="@layout/fragment_ecg_basics_4">
+        <action
+            android:id="@+id/action_nav_ecgbasics4_to_nav_ecgbasics5"
+            app:destination="@id/nav_ecgbasics5"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_ecgbasics5"
+        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment5"
+        android:label="ECG Basic 5"
+        tools:layout="@layout/fragment_ecg_basics_5" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.soumio.inceptiontutorial.Profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="com.soumio.inceptiontutorial.About.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+</navigation>

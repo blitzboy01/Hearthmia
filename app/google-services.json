@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "378306453508",
+    "firebase_url": "https://tensorflowliteinceptiont-1416d.firebaseio.com",
+    "project_id": "tensorflowliteinceptiont-1416d",
+    "storage_bucket": "tensorflowliteinceptiont-1416d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378306453508:android:2f08769a727e3524661551",
+        "android_client_info": {
+          "package_name": "com.soumio.inceptiontutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378306453508-qqkm06c5gonvmo3vtc7o11nljd5l1tk1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.soumio.inceptiontutorial",
+            "certificate_hash": "1f20ddfd176bde9e735652c23e2682c4321519c3"
+          }
+        },
+        {
+          "client_id": "378306453508-1euan2tvlsm9g0sdmemlfa0ipqmv1jtd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIYdAQL4rWAiH4Ma61b4FbheFfWZs3Vp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "378306453508-1euan2tvlsm9g0sdmemlfa0ipqmv1jtd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
