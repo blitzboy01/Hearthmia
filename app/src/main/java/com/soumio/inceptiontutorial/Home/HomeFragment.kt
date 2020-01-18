@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         }
 
         val btnHistory: ImageButton = root.findViewById(R.id.history_button)
-        btnHistoryButton.setOnClickListener {
+        btnHistory.setOnClickListener {
             Intent(context, HistoryFragment::class.java).also { intent ->
                 startActivity(intent)
             }
