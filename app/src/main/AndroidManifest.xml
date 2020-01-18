@@ -22,8 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.Login.ActivityLogin"></activity>
-        <activity android:name="" />
-        <activity android:name="com.soumio.inceptiontutorial.ui.Navigation.ActivityUser">
+        <activity android:name=".ui.Signup.ActivitySignUp" />
+        <activity android:name=".ui.Navigation.ActivityUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

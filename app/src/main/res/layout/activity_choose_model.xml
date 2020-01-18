@@ -30,6 +30,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="80dp"
         android:clickable="true"
+        android:focusable="true"
         android:onClick="onClick"
         android:src="@drawable/arrowtoleft" />
 
@@ -38,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:layout_marginTop="120dp"
-        android:background="#ffff"
+        android:background="@android:color/transparent"
         android:src="@drawable/upload_ecg" />
 
     <androidx.core.widget.NestedScrollView

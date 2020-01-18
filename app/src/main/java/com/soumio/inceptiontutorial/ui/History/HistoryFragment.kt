@@ -21,7 +21,7 @@ class HistoryFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_history, container, false)
         historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel::class.java)
 
-        val recyclerViewHistory = root.recyclerHistory
+        val recyclerViewHistory = root.recyclerViewHistory
 
         recyclerViewHistory.layoutManager = GridLayoutManager(context, 1)
         recyclerViewHistory.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))

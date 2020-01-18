@@ -25,7 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.soumio.inceptiontutorial.R;
 import com.soumio.inceptiontutorial.ui.Classify.Classify_L2;
-import com.soumio.inceptiontutorial.ui.Login.ActivityLogin;
+import com.soumio.inceptiontutorial.ui.Navigation.ActivityUser;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
@@ -266,7 +266,7 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
         }
         back_img = findViewById(R.id.Mainback);
         back_img.setOnClickListener(view -> {
-            Intent login = new Intent(ChooseModel.this, ActivityLogin.class);
+            Intent login = new Intent(this, ActivityUser.class);
             startActivity(login);
 
         });

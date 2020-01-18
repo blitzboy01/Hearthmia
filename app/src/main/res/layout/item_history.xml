@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayoutBackground"
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:clickable="true"
+    android:clipToPadding="false"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:padding="16dp">
@@ -17,17 +17,17 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:fontFamily="@font/oswald"
+        android:text="ECG Result"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:fontFamily="@font/oswald"
-        tools:text="ECG Result" />
+        app:fontFamily="@font/oswald" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:textSize="14sp"
-        tools:text="January 18, 2020" />
+        android:text="January 18, 2020"
+        android:textSize="14sp" />
 
 </RelativeLayout>
