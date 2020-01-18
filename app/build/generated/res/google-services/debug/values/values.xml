@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">378306453508-1euan2tvlsm9g0sdmemlfa0ipqmv1jtd.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://tensorflowliteinceptiont-1416d.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">378306453508</string>
+    <string name="google_api_key" translatable="false">AIzaSyAIYdAQL4rWAiH4Ma61b4FbheFfWZs3Vp8</string>
+    <string name="google_app_id" translatable="false">1:378306453508:android:2f08769a727e3524661551</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAIYdAQL4rWAiH4Ma61b4FbheFfWZs3Vp8</string>
+    <string name="google_storage_bucket" translatable="false">tensorflowliteinceptiont-1416d.appspot.com</string>
+    <string name="project_id" translatable="false">tensorflowliteinceptiont-1416d</string>
+</resources>
