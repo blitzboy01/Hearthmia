@@ -19,12 +19,12 @@ class HistoryFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_history, container, false)
+        historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel::class.java)
 
         val recyclerViewHistory = root.recyclerHistory
 
         recyclerViewHistory.layoutManager = GridLayoutManager(context, 1)
         recyclerViewHistory.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-        historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel::class.java)
 
         historyViewModel.getListHistory().observe(this, Observer {
             val items: List<History> = it

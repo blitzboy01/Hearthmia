@@ -23,9 +23,9 @@ import androidx.core.content.ContextCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.soumio.inceptiontutorial.R;
 import com.soumio.inceptiontutorial.ui.Classify.Classify_L2;
 import com.soumio.inceptiontutorial.ui.Login.ActivityLogin;
-import com.soumio.inceptiontutorial.R;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;

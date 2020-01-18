@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.soumio.inceptiontutorial.R;
 import com.soumio.inceptiontutorial.ui.Analyze.ChooseModel;
 import com.soumio.inceptiontutorial.ui.Login.ActivityLogin;
-import com.soumio.inceptiontutorial.R;
 
 public class ActivitySignUp extends AppCompatActivity {
     EditText emailId, password, name, birthdate, phonenumber;

@@ -18,6 +18,8 @@ class HistoryViewModel : ViewModel() {
                 History(),
                 History(),
                 History(),
+                History(),
+                History(),
                 History()
         )
         return listHistory

@@ -13,6 +13,7 @@ class HistoryAdapter(
         private val list: List<History>,
         private val context: Context
 ) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bindView(item: History) {
             itemView.setOnClickListener {
@@ -22,19 +23,16 @@ class HistoryAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         val view = LayoutInflater.from(context).inflate(R.layout.item_history, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         val item = list[position]
         holder.bindView(item)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         return list.size
     }
 

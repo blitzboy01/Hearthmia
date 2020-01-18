@@ -22,10 +22,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.soumio.inceptiontutorial.ui.ActivityHistory;
-import com.soumio.inceptiontutorial.ui.Analyze.ChooseModel;
-import com.soumio.inceptiontutorial.ui.Leads;
 import com.soumio.inceptiontutorial.R;
+import com.soumio.inceptiontutorial.model.Leads;
+import com.soumio.inceptiontutorial.ui.Analyze.ChooseModel;
+import com.soumio.inceptiontutorial.ui.History.HistoryFragment;
 
 import org.tensorflow.lite.Interpreter;
 
@@ -479,7 +479,7 @@ public class Classify_L2 extends AppCompatActivity {
 
         history_button = findViewById(R.id.history_btn);
         history_button.setOnClickListener(view -> {
-            Intent history = new Intent(Classify_L2.this, ActivityHistory.class);
+            Intent history = new Intent(this, HistoryFragment.class);
             startActivity(history);
 
         });

@@ -11,8 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.soumio.inceptiontutorial.ui.Analyze.ChooseModel;
 import com.soumio.inceptiontutorial.R;
+import com.soumio.inceptiontutorial.ui.Analyze.ChooseModel;
 import com.soumio.inceptiontutorial.ui.Signup.ActivitySignUp;
 
 public class ActivityLogin extends AppCompatActivity implements View.OnClickListener {
