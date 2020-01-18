@@ -670,7 +670,7 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             } catch (IOException ie) {
                 ie.printStackTrace();
             }
-            imageViewLead1.setImageBitmap(bitmap1);
+            Glide.with(this).asBitmap().load(bitmap1).into(imageViewLead1);
             //            Glide.with(this).asBitmap().load(bitmap1).into(imageViewLead1);
             Glide.with(this).asBitmap().load(bitmap2).into(imageViewLead2);
             Glide.with(this).asBitmap().load(bitmap3).into(imageViewLead3);
