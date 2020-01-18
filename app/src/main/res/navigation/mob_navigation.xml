@@ -5,6 +5,11 @@
     android:id="@+id/mob_navigation"
     app:startDestination="@+id/nav_home">
     <fragment
+        android:id="@+id/nav_history"
+        android:name="com.soumio.inceptiontutorial.History.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history" />
+    <fragment
         android:id="@+id/nav_home"
         android:name="com.soumio.inceptiontutorial.Home.HomeFragment"
         android:label="@string/menu_home"
