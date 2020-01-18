@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,7 +20,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.soumio.inceptiontutorial.R;
@@ -39,6 +39,7 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -61,19 +62,6 @@ public class Classify_L2 extends AppCompatActivity {
     private final Interpreter.Options tfliteOptions = new Interpreter.Options();
     Uri uri, uri2, uri3, uri4, uri5, uri6, uri7, uri8, uri9, uri10, uri11, uri12;
     Bitmap bitmap, bitmap2, bitmap3, bitmap4, bitmap5, bitmap6, bitmap7, bitmap8, bitmap9, bitmap10, bitmap11, bitmap12;
-    Bitmap bitmap_orig;
-    Bitmap bitmap_orig2;
-    Bitmap bitmap_orig3;
-    Bitmap bitmap_orig4;
-    Bitmap bitmap_orig5;
-    Bitmap bitmap_orig6;
-    Bitmap bitmap_orig7;
-    Bitmap bitmap_orig8;
-    Bitmap bitmap_orig9;
-    Bitmap bitmap_orig10;
-    Bitmap bitmap_orig11;
-    Bitmap bitmap_orig12;
-
     DatabaseReference databaseLeads;
     Button btstart;
     // tflite graph
@@ -119,13 +107,18 @@ public class Classify_L2 extends AppCompatActivity {
     private PriorityQueue<Map.Entry<String, Float>> sortedLabels =
             new PriorityQueue<>(
                     RESULTS_TO_SHOW,
-                    (o1, o2) -> (o1.getValue()).compareTo(o2.getValue()));
+                    new Comparator<Map.Entry<String, Float>>() {
+                        @Override
+                        public int compare(Map.Entry<String, Float> o1, Map.Entry<String, Float> o2) {
+                            return (o1.getValue()).compareTo(o2.getValue());
+                        }
+                    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // get all selected classifier data from classifiers
-        chosen = getIntent().getStringExtra("chosen");
-        quant = getIntent().getBooleanExtra("quant", false);
+        chosen = (String) getIntent().getStringExtra("chosen");
+        quant = (boolean) getIntent().getBooleanExtra("quant", false);
         // initialize array that holds image data
         intValues = new int[DIM_IMG_SIZE_X * DIM_IMG_SIZE_Y];
         super.onCreate(savedInstanceState);
@@ -134,16 +127,24 @@ public class Classify_L2 extends AppCompatActivity {
         showPDialog1();
         showDialog2();
 
-        new Handler().postDelayed(() -> {
-            Toast.makeText(getBaseContext(), "Completed!", Toast.LENGTH_SHORT).show();
-            progressDialog.dismiss();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getBaseContext(), "Completed!", Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+            }
+
         }, 10000);
 
         int noOfSecond = 1;
-        new Handler().postDelayed(() -> {
-                    //TODO Set your button auto perform click.
-                    btn1.performClick();
-                }, noOfSecond * 1000
+        new Handler().postDelayed(new Runnable() {
+
+                                      @Override
+                                      public void run() {
+                                          //TODO Set your button auto perform click.
+                                          btn1.performClick();
+                                      }
+                                  }, noOfSecond * 1000
         );
         //initilize graph and labels
         run1();
@@ -170,39 +171,39 @@ public class Classify_L2 extends AppCompatActivity {
         databaseLeads = FirebaseDatabase.getInstance().getReference("LEADS");
 
         // labels that hold top three results of CNN
-        label1 = findViewById(R.id.label1);
-        label2 = findViewById(R.id.label2);
-        label3 = findViewById(R.id.label3);
+        label1 = (TextView) findViewById(R.id.label1);
+        label2 = (TextView) findViewById(R.id.label2);
+        label3 = (TextView) findViewById(R.id.label3);
         // displays the probabilities of top labels
        /*      Confidence1 = (TextView) findViewById(R.id.Confidence1);
         Confidence2 = (TextView) findViewById(R.id.Confidence2);
         Confidence3 = (TextView) findViewById(R.id.Confidence3);*/
 
         // labels that hold top three results of CNN
-        label4 = findViewById(R.id.label4);
-        labelCategory = findViewById(R.id.labelCategory);
-        label5 = findViewById(R.id.label5);
-        label6 = findViewById(R.id.label6);
-        label7 = findViewById(R.id.label7);
-        label8 = findViewById(R.id.label8);
-        label9 = findViewById(R.id.label9);
-        label10 = findViewById(R.id.label10);
-        label11 = findViewById(R.id.label11);
-        label12 = findViewById(R.id.label12);
+        label4 = (TextView) findViewById(R.id.label4);
+        labelCategory = (TextView) findViewById(R.id.labelCategory);
+        label5 = (TextView) findViewById(R.id.label5);
+        label6 = (TextView) findViewById(R.id.label6);
+        label7 = (TextView) findViewById(R.id.label7);
+        label8 = (TextView) findViewById(R.id.label8);
+        label9 = (TextView) findViewById(R.id.label9);
+        label10 = (TextView) findViewById(R.id.label10);
+        label11 = (TextView) findViewById(R.id.label11);
+        label12 = (TextView) findViewById(R.id.label12);
 
         // initialize imageView that displays selected image to the user
-        selected_image = findViewById(R.id.selected_image1);
-        selected_image2 = findViewById(R.id.selected_image2);
-        selected_image3 = findViewById(R.id.selected_image3);
-        selected_image4 = findViewById(R.id.selected_image4);
-        selected_image5 = findViewById(R.id.selected_image5);
-        selected_image6 = findViewById(R.id.selected_image6);
-        selected_image7 = findViewById(R.id.selected_image7);
-        selected_image8 = findViewById(R.id.selected_image8);
-        selected_image9 = findViewById(R.id.selected_image9);
-        selected_image10 = findViewById(R.id.selected_image10);
-        selected_image11 = findViewById(R.id.selected_image11);
-        selected_image12 = findViewById(R.id.selected_image12);
+        selected_image = (ImageView) findViewById(R.id.selected_image1);
+        selected_image2 = (ImageView) findViewById(R.id.selected_image2);
+        selected_image3 = (ImageView) findViewById(R.id.selected_image3);
+        selected_image4 = (ImageView) findViewById(R.id.selected_image4);
+        selected_image5 = (ImageView) findViewById(R.id.selected_image5);
+        selected_image6 = (ImageView) findViewById(R.id.selected_image6);
+        selected_image7 = (ImageView) findViewById(R.id.selected_image7);
+        selected_image8 = (ImageView) findViewById(R.id.selected_image8);
+        selected_image9 = (ImageView) findViewById(R.id.selected_image9);
+        selected_image10 = (ImageView) findViewById(R.id.selected_image10);
+        selected_image11 = (ImageView) findViewById(R.id.selected_image11);
+        selected_image12 = (ImageView) findViewById(R.id.selected_image12);
 
         // initialize array to hold top labels
         topLables = new String[RESULTS_TO_SHOW];
@@ -259,295 +260,295 @@ public class Classify_L2 extends AppCompatActivity {
 
 
         // allows user to go back to activity to select a different image
-        back_button = findViewById(R.id.back_button);
-        back_button.setOnClickListener(v -> {
-            Intent back = new Intent(Classify_L2.this, ChooseModel.class);
-            startActivity(back);
+        back_button = (Button) findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(Classify_L2.this, ChooseModel.class);
+                startActivity(back);
+            }
         });
 
         // classify current dispalyed image
-        btn1 = findViewById(R.id.btn1);
-        btn1.setOnClickListener(view -> {
-            // get current bitmap from imageView
-            if (bitmap_orig != null) {
-                bitmap_orig = ((BitmapDrawable) selected_image.getDrawable()).getBitmap();
+        btn1 = (Button) findViewById(R.id.btn1);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get current bitmap from imageView
+                Bitmap bitmap_orig = ((BitmapDrawable) selected_image.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap = getResizedBitmap(bitmap_orig, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels();
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels();
 
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig2 != null) {
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig2 = ((BitmapDrawable) selected_image2.getDrawable()).getBitmap();
+                Bitmap bitmap_orig2 = ((BitmapDrawable) selected_image2.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap2 = getResizedBitmap(bitmap_orig2, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap2);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels2();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig3 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels2();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig3 = ((BitmapDrawable) selected_image3.getDrawable()).getBitmap();
+                Bitmap bitmap_orig3 = ((BitmapDrawable) selected_image3.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap3 = getResizedBitmap(bitmap_orig3, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap3);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels3();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig4 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels3();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig4 = ((BitmapDrawable) selected_image4.getDrawable()).getBitmap();
+                Bitmap bitmap_orig4 = ((BitmapDrawable) selected_image4.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap4 = getResizedBitmap(bitmap_orig4, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap4);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels4();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig5 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels4();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig5 = ((BitmapDrawable) selected_image5.getDrawable()).getBitmap();
+                Bitmap bitmap_orig5 = ((BitmapDrawable) selected_image5.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap5 = getResizedBitmap(bitmap_orig5, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap5);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels5();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig6 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels5();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig6 = ((BitmapDrawable) selected_image6.getDrawable()).getBitmap();
+                Bitmap bitmap_orig6 = ((BitmapDrawable) selected_image6.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap6 = getResizedBitmap(bitmap_orig6, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap6);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels6();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig7 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels6();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig7 = ((BitmapDrawable) selected_image7.getDrawable()).getBitmap();
+                Bitmap bitmap_orig7 = ((BitmapDrawable) selected_image7.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap7 = getResizedBitmap(bitmap_orig7, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap7);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels7();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig8 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels7();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig8 = ((BitmapDrawable) selected_image8.getDrawable()).getBitmap();
+                Bitmap bitmap_orig8 = ((BitmapDrawable) selected_image8.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap8 = getResizedBitmap(bitmap_orig8, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap8);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels8();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig9 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels8();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig9 = ((BitmapDrawable) selected_image9.getDrawable()).getBitmap();
+                Bitmap bitmap_orig9 = ((BitmapDrawable) selected_image9.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap9 = getResizedBitmap(bitmap_orig9, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap9);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels9();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig10 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels9();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig10 = ((BitmapDrawable) selected_image10.getDrawable()).getBitmap();
+                Bitmap bitmap_orig10 = ((BitmapDrawable) selected_image10.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap10 = getResizedBitmap(bitmap_orig10, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap10);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels10();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig11 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels10();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig11 = ((BitmapDrawable) selected_image11.getDrawable()).getBitmap();
+                Bitmap bitmap_orig11 = ((BitmapDrawable) selected_image11.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap11 = getResizedBitmap(bitmap_orig11, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap11);
-            }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels11();
-            //----------------------------------------------------------------------------------
-            if (bitmap_orig12 != null) {
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels11();
+                //----------------------------------------------------------------------------------
                 // get current bitmap from imageView
-                bitmap_orig12 = ((BitmapDrawable) selected_image12.getDrawable()).getBitmap();
+                Bitmap bitmap_orig12 = ((BitmapDrawable) selected_image12.getDrawable()).getBitmap();
                 // resize the bitmap to the required input size to the CNN
                 Bitmap bitmap12 = getResizedBitmap(bitmap_orig12, DIM_IMG_SIZE_X, DIM_IMG_SIZE_Y);
                 // convert bitmap to byte array
                 convertBitmapToByteBuffer(bitmap12);
+                // pass byte data to the graph
+                if (quant) {
+                    tflite.run(imgData, labelProbArrayB);
+                } else {
+                    tflite.run(imgData, labelProbArray);
+                }
+                // display the results
+                printTopKLabels12();
             }
-            // pass byte data to the graph
-            if (quant) {
-                tflite.run(imgData, labelProbArrayB);
-            } else {
-                tflite.run(imgData, labelProbArray);
-            }
-            // display the results
-            printTopKLabels12();
+
         });
 
-        upload_btn = findViewById(R.id.upload_btn);
-        upload_btn.setOnClickListener(view -> addUploadData());
+        upload_btn = (Button) findViewById(R.id.upload_btn);
+        upload_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addUploadData();
 
-        history_button = findViewById(R.id.history_btn);
-        history_button.setOnClickListener(view -> {
-            Intent history = new Intent(this, HistoryFragment.class);
-            startActivity(history);
+            }
+
+        });
+
+        history_button = (Button) findViewById(R.id.history_btn);
+        history_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent history = new Intent(Classify_L2.this, HistoryFragment.class);
+                startActivity(history);
+
+            }
 
         });
 
         //Category
-        btnCategory = findViewById(R.id.btnCategory);
-        btnCategory.setOnClickListener(view -> {
+        btnCategory = (Button) findViewById(R.id.btnCategory);
+        btnCategory.setOnClickListener(new View.OnClickListener() {
 
-            if (selected_image != null && selected_image2 != null && selected_image3 != null && selected_image4 != null
-                    && selected_image5 != null && selected_image6 != null && selected_image7 != null && selected_image8 != null
-                    && selected_image9 != null && selected_image10 != null && selected_image11 != null && selected_image12 != null) {
+            @Override
+            public void onClick(View view) {
+
+                if (selected_image != null && selected_image2 != null && selected_image3 != null && selected_image4 != null
+                        && selected_image5 != null && selected_image6 != null && selected_image7 != null && selected_image8 != null
+                        && selected_image9 != null && selected_image10 != null && selected_image11 != null && selected_image12 != null) {
 
 
-                if (topLables[2].equalsIgnoreCase("invalid") || topLables2[2].equalsIgnoreCase("invalid") ||
-                        topLables3[2].equalsIgnoreCase("invalid") || topLables4[2].equalsIgnoreCase("invalid") ||
-                        topLables5[2].equalsIgnoreCase("invalid") || topLables6[2].equalsIgnoreCase("invalid") ||
-                        topLables7[2].equalsIgnoreCase("invalid") || topLables8[2].equalsIgnoreCase("invalid") ||
-                        topLables9[2].equalsIgnoreCase("invalid") || topLables10[2].equalsIgnoreCase("invalid") ||
-                        topLables11[2].equalsIgnoreCase("invalid") || topLables12[2].equalsIgnoreCase("invalid")) {
+                    if (topLables[2].equalsIgnoreCase("invalid") || topLables2[2].equalsIgnoreCase("invalid") ||
+                            topLables3[2].equalsIgnoreCase("invalid") || topLables4[2].equalsIgnoreCase("invalid") ||
+                            topLables5[2].equalsIgnoreCase("invalid") || topLables6[2].equalsIgnoreCase("invalid") ||
+                            topLables7[2].equalsIgnoreCase("invalid") || topLables8[2].equalsIgnoreCase("invalid") ||
+                            topLables9[2].equalsIgnoreCase("invalid") || topLables10[2].equalsIgnoreCase("invalid") ||
+                            topLables11[2].equalsIgnoreCase("invalid") || topLables12[2].equalsIgnoreCase("invalid")) {
 
-                    labelCategory.setText("You entered Invalid Image Please CHECK!");
+                        labelCategory.setText("You entered Invalid Image Please CHECK!");
 
-                } else if (topLables[2].equalsIgnoreCase("normal") && topLables2[2].equalsIgnoreCase("normal") &&
-                        topLables3[2].equalsIgnoreCase("normal") && topLables4[2].equalsIgnoreCase("normal") &&
-                        topLables5[2].equalsIgnoreCase("normal") && topLables6[2].equalsIgnoreCase("normal") &&
-                        topLables7[2].equalsIgnoreCase("normal") && topLables8[2].equalsIgnoreCase("normal") &&
-                        topLables9[2].equalsIgnoreCase("normal") && topLables10[2].equalsIgnoreCase("normal") &&
-                        topLables11[2].equalsIgnoreCase("normal") && topLables12[2].equalsIgnoreCase("normal")) {
-                    labelCategory.setText("NORMAL ECG");
-                } else if (topLables[2].equalsIgnoreCase("irregular") && topLables2[2].equalsIgnoreCase("irregular") &&
-                        topLables3[2].equalsIgnoreCase("irregular") && topLables4[2].equalsIgnoreCase("irregular") &&
-                        topLables5[2].equalsIgnoreCase("irregular") && topLables6[2].equalsIgnoreCase("irregular") &&
-                        topLables7[2].equalsIgnoreCase("irregular") && topLables8[2].equalsIgnoreCase("irregular") &&
-                        topLables9[2].equalsIgnoreCase("irregular") && topLables10[2].equalsIgnoreCase("normal") &&
-                        topLables11[2].equalsIgnoreCase("irregular") && topLables12[2].equalsIgnoreCase("irregular")) {
-                    labelCategory.setText("IRREGULAR ECG");
+                    } else if (topLables[2].equalsIgnoreCase("normal") && topLables2[2].equalsIgnoreCase("normal") &&
+                            topLables3[2].equalsIgnoreCase("normal") && topLables4[2].equalsIgnoreCase("normal") &&
+                            topLables5[2].equalsIgnoreCase("normal") && topLables6[2].equalsIgnoreCase("normal") &&
+                            topLables7[2].equalsIgnoreCase("normal") && topLables8[2].equalsIgnoreCase("normal") &&
+                            topLables9[2].equalsIgnoreCase("normal") && topLables10[2].equalsIgnoreCase("normal") &&
+                            topLables11[2].equalsIgnoreCase("normal") && topLables12[2].equalsIgnoreCase("normal")) {
+                        labelCategory.setText("NORMAL ECG");
+                    } else if (topLables[2].equalsIgnoreCase("irregular") && topLables2[2].equalsIgnoreCase("irregular") &&
+                            topLables3[2].equalsIgnoreCase("irregular") && topLables4[2].equalsIgnoreCase("irregular") &&
+                            topLables5[2].equalsIgnoreCase("irregular") && topLables6[2].equalsIgnoreCase("irregular") &&
+                            topLables7[2].equalsIgnoreCase("irregular") && topLables8[2].equalsIgnoreCase("irregular") &&
+                            topLables9[2].equalsIgnoreCase("irregular") && topLables10[2].equalsIgnoreCase("normal") &&
+                            topLables11[2].equalsIgnoreCase("irregular") && topLables12[2].equalsIgnoreCase("irregular")) {
+                        labelCategory.setText("IRREGULAR ECG");
 
-                } else if (topLables[2].equalsIgnoreCase("irregular") && topLables5[2].equalsIgnoreCase("irregular") &&
-                        topLables11[2].equalsIgnoreCase("irregular") && topLables12[2].equalsIgnoreCase("irregular")) {
-                    labelCategory.setText("LATERAL WALL");
+                    } else if (topLables[2].equalsIgnoreCase("irregular") && topLables5[2].equalsIgnoreCase("irregular") &&
+                            topLables11[2].equalsIgnoreCase("irregular") && topLables12[2].equalsIgnoreCase("irregular")) {
+                        labelCategory.setText("LATERAL WALL");
 
-                } else if (topLables2[2].equalsIgnoreCase("irregular") && topLables3[2].equalsIgnoreCase("irregular") &&
-                        topLables6[2].equalsIgnoreCase("irregular")) {
+                    } else if (topLables2[2].equalsIgnoreCase("irregular") && topLables3[2].equalsIgnoreCase("irregular") &&
+                            topLables6[2].equalsIgnoreCase("irregular")) {
 
-                    labelCategory.setText("INFERIOR WALL");
-                } else if (topLables7[2].equalsIgnoreCase("irregular") && topLables8[2].equalsIgnoreCase("irregular")) {
-                    labelCategory.setText("SEPTAL WALL");
+                        labelCategory.setText("INFERIOR WALL");
+                    } else if (topLables7[2].equalsIgnoreCase("irregular") && topLables8[2].equalsIgnoreCase("irregular")) {
+                        labelCategory.setText("SEPTAL WALL");
 
-                } else if (topLables10[2].equalsIgnoreCase("irregular") && topLables11[2].equalsIgnoreCase("irregular")) {
-                    labelCategory.setText("ANTERIOR WALL");
+                    } else if (topLables10[2].equalsIgnoreCase("irregular") && topLables11[2].equalsIgnoreCase("irregular")) {
+                        labelCategory.setText("ANTERIOR WALL");
 
+                    } else {
+                        labelCategory.setText("IRREGULAR ECG");
+                    }
                 } else {
-                    labelCategory.setText("IRREGULAR ECG");
+                    Toast.makeText(Classify_L2.this, "Please Upload All Images! ", Toast.LENGTH_LONG).show();
+
                 }
-            } else {
-                Toast.makeText(Classify_L2.this, "Please Upload All Images! ", Toast.LENGTH_LONG).show();
 
             }
+
 
         });
 
         // get image from previous activity to show in the imageView
-        uri = getIntent().getParcelableExtra("resID_uri");
+        uri = (Uri) getIntent().getParcelableExtra("resID_uri");
         try {
-            if (uri != null && bitmap != null) {
+            if (uri != null) {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
             }
-            Glide.with(this).asBitmap().load(bitmap).into(selected_image);
+            selected_image.setImageBitmap(bitmap);
             // not sure why this happens, but without this the image appears on its side
             selected_image.setRotation(selected_image.getRotation() + 0);
         } catch (IOException e) {
@@ -556,12 +557,12 @@ public class Classify_L2 extends AppCompatActivity {
 
         // get image from previous activity to show in the imageView
 
-        uri2 = getIntent().getParcelableExtra("resID_uri2");
+        uri2 = (Uri) getIntent().getParcelableExtra("resID_uri2");
         try {
-            if (uri2 != null && bitmap2 != null) {
+            if (uri2 != null) {
                 bitmap2 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri2);
             }
-            Glide.with(this).asBitmap().load(bitmap2).into(selected_image2);
+            selected_image2.setImageBitmap(bitmap2);
             // not sure why this happens, but without this the image appears on its side
             selected_image2.setRotation(selected_image2.getRotation() + 0);
         } catch (IOException e) {
@@ -569,12 +570,12 @@ public class Classify_L2 extends AppCompatActivity {
         }
 
 
-        uri3 = getIntent().getParcelableExtra("resID_uri3");
+        uri3 = (Uri) getIntent().getParcelableExtra("resID_uri3");
         try {
-            if (uri3 != null && bitmap3 != null) {
+            if (uri3 != null) {
                 bitmap3 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri3);
             }
-            Glide.with(this).asBitmap().load(bitmap3).into(selected_image3);
+            selected_image3.setImageBitmap(bitmap3);
             // not sure why this happens, but without this the image appears on its side
             selected_image3.setRotation(selected_image3.getRotation() + 0);
         } catch (IOException e) {
@@ -582,12 +583,12 @@ public class Classify_L2 extends AppCompatActivity {
         }
 
         // get image from previous activity to show in the imageView
-        uri4 = getIntent().getParcelableExtra("resID_uri4");
+        uri4 = (Uri) getIntent().getParcelableExtra("resID_uri4");
         try {
-            if (uri4 != null && bitmap4 != null) {
+            if (uri4 != null) {
                 bitmap4 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri4);
             }
-            Glide.with(this).asBitmap().load(bitmap4).into(selected_image4);
+            selected_image4.setImageBitmap(bitmap4);
             // not sure why this happens, but without this the image appears on its side
             selected_image4.setRotation(selected_image4.getRotation() + 0);
         } catch (IOException e) {
@@ -595,96 +596,96 @@ public class Classify_L2 extends AppCompatActivity {
         }
 
         // get image from previous activity to show in the imageView
-        uri5 = getIntent().getParcelableExtra("resID_uri5");
+        uri5 = (Uri) getIntent().getParcelableExtra("resID_uri5");
         try {
-            if (uri5 != null && bitmap5 != null) {
+            if (uri5 != null) {
                 bitmap5 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri5);
             }
-            Glide.with(this).asBitmap().load(bitmap5).into(selected_image5);
+            selected_image5.setImageBitmap(bitmap5);
             // not sure why this happens, but without this the image appears on its side
             selected_image5.setRotation(selected_image5.getRotation() + 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // get image from previous activity to show in the imageView
-        uri6 = getIntent().getParcelableExtra("resID_uri6");
+        uri6 = (Uri) getIntent().getParcelableExtra("resID_uri6");
         try {
-            if (uri6 != null && bitmap6 != null) {
+            if (uri6 != null) {
                 bitmap6 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri6);
             }
-            Glide.with(this).asBitmap().load(bitmap6).into(selected_image6);
+            selected_image6.setImageBitmap(bitmap6);
             // not sure why this happens, but without this the image appears on its side
             selected_image6.setRotation(selected_image6.getRotation() + 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // get image from previous activity to show in the imageView
-        uri7 = getIntent().getParcelableExtra("resID_uri7");
+        uri7 = (Uri) getIntent().getParcelableExtra("resID_uri7");
         try {
-            if (uri7 != null && bitmap7 != null) {
+            if (uri7 != null) {
                 bitmap7 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri7);
             }
-            Glide.with(this).asBitmap().load(bitmap7).into(selected_image7);
+            selected_image7.setImageBitmap(bitmap7);
             // not sure why this happens, but without this the image appears on its side
             selected_image7.setRotation(selected_image7.getRotation() + 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // get image from previous activity to show in the imageView
-        uri8 = getIntent().getParcelableExtra("resID_uri8");
+        uri8 = (Uri) getIntent().getParcelableExtra("resID_uri8");
         try {
-            if (uri8 != null && bitmap8 != null) {
+            if (uri8 != null) {
                 bitmap8 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri8);
             }
-            Glide.with(this).asBitmap().load(bitmap8).into(selected_image8);
+            selected_image8.setImageBitmap(bitmap8);
             // not sure why this happens, but without this the image appears on its side
             selected_image8.setRotation(selected_image8.getRotation() + 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // get image from previous activity to show in the imageView
-        uri9 = getIntent().getParcelableExtra("resID_uri9");
+        uri9 = (Uri) getIntent().getParcelableExtra("resID_uri9");
         try {
-            if (uri9 != null && bitmap9 != null) {
+            if (uri9 != null) {
                 bitmap9 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri9);
             }
-            Glide.with(this).asBitmap().load(bitmap9).into(selected_image9);
+            selected_image9.setImageBitmap(bitmap9);
             // not sure why this happens, but without this the image appears on its side
             selected_image9.setRotation(selected_image9.getRotation() + 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // get image from previous activity to show in the imageView
-        uri10 = getIntent().getParcelableExtra("resID_uri10");
+        uri10 = (Uri) getIntent().getParcelableExtra("resID_uri10");
         try {
-            if (uri10 != null && bitmap10 != null) {
+            if (uri10 != null) {
                 bitmap10 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri10);
             }
-            Glide.with(this).asBitmap().load(bitmap10).into(selected_image10);
+            selected_image10.setImageBitmap(bitmap10);
             // not sure why this happens, but without this the image appears on its side
             selected_image10.setRotation(selected_image10.getRotation() + 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // get image from previous activity to show in the imageView
-        uri11 = getIntent().getParcelableExtra("resID_uri11");
+        uri11 = (Uri) getIntent().getParcelableExtra("resID_uri11");
         try {
-            if (uri11 != null && bitmap11 != null) {
+            if (uri11 != null) {
                 bitmap11 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri11);
             }
-            Glide.with(this).asBitmap().load(bitmap11).into(selected_image11);
+            selected_image11.setImageBitmap(bitmap11);
             // not sure why this happens, but without this the image appears on its side
             selected_image11.setRotation(selected_image11.getRotation() + 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
         // get image from previous activity to show in the imageView
-        uri12 = getIntent().getParcelableExtra("resID_uri12");
+        uri12 = (Uri) getIntent().getParcelableExtra("resID_uri12");
         try {
-            if (uri12 != null && bitmap12 != null) {
+            if (uri12 != null) {
                 bitmap12 = MediaStore.Images.Media.getBitmap(getContentResolver(), uri12);
             }
-            Glide.with(this).asBitmap().load(bitmap12).into(selected_image12);
+            selected_image12.setImageBitmap(bitmap12);
             // not sure why this happens, but without this the image appears on its side
             selected_image12.setRotation(selected_image12.getRotation() + 0);
         } catch (IOException e) {
