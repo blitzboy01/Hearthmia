@@ -6,12 +6,27 @@
     app:startDestination="@+id/nav_home">
     <fragment
         android:id="@+id/nav_history"
-        android:name="com.soumio.inceptiontutorial.History.HistoryFragment"
+        android:name="com.soumio.inceptiontutorial.ui.History.HistoryFragment"
         android:label="History"
-        tools:layout="@layout/fragment_history" />
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_nav_history_to_nav_history_details"
+            app:destination="@id/nav_history_details" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_history_details"
+        android:name="com.soumio.inceptiontutorial.ui.History.HistoryDetail.HistoryDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_history_detail" />
+
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="com.soumio.inceptiontutorial.ui.Help.HelpFragment"
+        android:label="Help"
+        tools:layout="@layout/fragment_help" />
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.soumio.inceptiontutorial.Home.HomeFragment"
+        android:name="com.soumio.inceptiontutorial.ui.Home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -42,16 +57,22 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_history"
+            app:destination="@id/nav_history" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_help"
+            app:destination="@id/nav_help" />
     </fragment>
     <fragment
         android:id="@+id/nav_analyze"
-        android:name="com.soumio.inceptiontutorial.Analyze.ChooseModel"
+        android:name="com.soumio.inceptiontutorial.ui.Analyze.ChooseModel"
         android:label="Please Insert 12-Lead Here"
         tools:layout="@layout/activity_choose_model" />
 
     <fragment
         android:id="@+id/nav_ecgbasics"
-        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment1"
+        android:name="com.soumio.inceptiontutorial.ui.ECGBasic.ECGBasicsFragment1"
         android:label="ECG Basic 1"
         tools:layout="@layout/fragment_ecg_basics_1">
         <action
@@ -65,7 +86,7 @@
 
     <fragment
         android:id="@+id/nav_ecgbasics2"
-        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment2"
+        android:name="com.soumio.inceptiontutorial.ui.ECGBasic.ECGBasicsFragment2"
         android:label="ECG Basic 2"
         tools:layout="@layout/fragment_ecg_basics_2">
         <action
@@ -78,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_ecgbasics3"
-        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment3"
+        android:name="com.soumio.inceptiontutorial.ui.ECGBasic.ECGBasicsFragment3"
         android:label="ECG Basic 3"
         tools:layout="@layout/fragment_ecg_basics_3">
         <action
@@ -91,7 +112,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_ecgbasics4"
-        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment4"
+        android:name="com.soumio.inceptiontutorial.ui.ECGBasic.ECGBasicsFragment4"
         android:label="ECG Basic 4"
         tools:layout="@layout/fragment_ecg_basics_4">
         <action
@@ -104,18 +125,18 @@
     </fragment>
     <fragment
         android:id="@+id/nav_ecgbasics5"
-        android:name="com.soumio.inceptiontutorial.ECGBasic.ECGBasicsFragment5"
+        android:name="com.soumio.inceptiontutorial.ui.ECGBasic.ECGBasicsFragment5"
         android:label="ECG Basic 5"
         tools:layout="@layout/fragment_ecg_basics_5" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.soumio.inceptiontutorial.Profile.ProfileFragment"
+        android:name="com.soumio.inceptiontutorial.ui.Profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.soumio.inceptiontutorial.About.AboutFragment"
+        android:name="com.soumio.inceptiontutorial.ui.About.AboutFragment"
         android:label="About"
         tools:layout="@layout/fragment_about" />
 </navigation>
