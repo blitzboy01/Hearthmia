@@ -29,6 +29,7 @@ import com.soumio.inceptiontutorial.ui.Navigation.ActivityUser;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ChooseModel extends AppCompatActivity implements View.OnClickListener {
 
@@ -607,63 +608,83 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
                 e.printStackTrace();
             }
         } else if (requestCode == Crop.REQUEST_CROP && resultCode == RESULT_OK) {
-//            try {
-            if (dest_1 != null) {
-                Glide.with(this).load(dest_1).into(imageViewLead1);
-            }
-            if (dest_2 != null) {
-//                    bitmap2 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_2);
-                Glide.with(this).load(dest_2).into(imageViewLead2);
-            }
-            if (dest_3 != null) {
-                Glide.with(this).load(dest_3).into(imageViewLead3);
-            }
-            if (dest_4 != null) {
-                Glide.with(this).load(dest_4).into(imageViewAvR);
-            }
-            if (dest_5 != null) {
-                Glide.with(this).load(dest_5).into(imageViewAvL);
-            }
-            if (dest_6 != null) {
-                Glide.with(this).load(dest_6).into(imageViewAvF);
-            }
-            if (dest_7 != null) {
-                Glide.with(this).load(dest_7).into(imageViewV1);
-            }
-            if (dest_8 != null) {
-                Glide.with(this).load(dest_8).into(imageViewV2);
-            }
-            if (dest_9 != null) {
-                Glide.with(this).load(dest_9).into(imageViewV3);
-            }
-            if (dest_10 != null) {
-                Glide.with(this).load(dest_10).into(imageViewV4);
-            }
-            if (dest_11 != null) {
-                Glide.with(this).load(dest_11).into(imageViewV5);
-            }
-            if (dest_12 != null) {
-                Glide.with(this).load(dest_12).into(imageViewV6);
-            }
-         /*   } catch (IOException ie) {
+            try {
+                if (dest_1 != null) {
+
+                    bitmap1 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_1);
+//                Glide.with(this).load(dest_1).into(imageViewLead1);
+                }
+                if (dest_2 != null) {
+                    bitmap2 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_2);
+//                Glide.with(this).load(dest_2).into(imageViewLead2);
+                }
+                if (dest_3 != null) {
+                    Glide.with(this).load(dest_3).into(imageViewLead3);
+                    bitmap3 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_3);
+
+                }
+                if (dest_4 != null) {
+//                    Glide.with(this).load(dest_4).into(imageViewAvR);
+                    bitmap4 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_4);
+
+                }
+                if (dest_5 != null) {
+//                    Glide.with(this).load(dest_5).into(imageViewAvL);
+                    bitmap5 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_5);
+
+                }
+                if (dest_6 != null) {
+//                    Glide.with(this).load(dest_6).into(imageViewAvF);
+                    bitmap6 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_6);
+
+                }
+                if (dest_7 != null) {
+//                    Glide.with(this).load(dest_7).into(imageViewV1);
+                    bitmap7 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_7);
+                }
+                if (dest_8 != null) {
+//                    Glide.with(this).load(dest_8).into(imageViewV2);
+                    bitmap8 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_8);
+
+                }
+                if (dest_9 != null) {
+//                    Glide.with(this).load(dest_9).into(imageViewV3);
+                    bitmap9 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_9);
+
+                }
+                if (dest_10 != null) {
+//                    Glide.with(this).load(dest_10).into(imageViewV4);
+                    bitmap10 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_10);
+
+                }
+                if (dest_11 != null) {
+//                    Glide.with(this).load(dest_11).into(imageViewV5);
+                    bitmap11 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_11);
+
+                }
+                if (dest_12 != null) {
+//                    Glide.with(this).load(dest_12).into(imageViewV6);
+                    bitmap12 = MediaStore.Images.Media.getBitmap(getContentResolver(), dest_12);
+
+                }
+            } catch (IOException ie) {
                 ie.printStackTrace();
-            }*/
-//            Glide.with(this).asBitmap().load(bitmap2).into(imageViewLead2);
+            }
+            imageViewLead1.setImageBitmap(bitmap1);
+            //            Glide.with(this).asBitmap().load(bitmap1).into(imageViewLead1);
+            Glide.with(this).asBitmap().load(bitmap2).into(imageViewLead2);
+            Glide.with(this).asBitmap().load(bitmap3).into(imageViewLead3);
 
-        /*    Glide.with(this).asBitmap().load(bitmap1).into(imageViewLead1);
-            Glide.with(this).load(bitmap2).into(imageViewLead2);
-            Glide.with(this).load(bitmap3).into(imageViewLead3);
+            Glide.with(this).asBitmap().load(bitmap4).into(imageViewAvR);
+            Glide.with(this).asBitmap().load(bitmap5).into(imageViewAvL);
+            Glide.with(this).asBitmap().load(bitmap6).into(imageViewAvF);
 
-            Glide.with(this).load(bitmap4).into(imageViewAvR);
-            Glide.with(this).load(bitmap5).into(imageViewAvL);
-            Glide.with(this).load(bitmap6).into(imageViewAvF);
-
-            Glide.with(this).load(bitmap7).into(imageViewV1);
-            Glide.with(this).load(bitmap8).into(imageViewV2);
-            Glide.with(this).load(bitmap9).into(imageViewV3);
-            Glide.with(this).load(bitmap10).into(imageViewV4);
-            Glide.with(this).load(bitmap11).into(imageViewV5);
-            Glide.with(this).load(bitmap12).into(imageViewV6);*/
+            Glide.with(this).asBitmap().load(bitmap7).into(imageViewV1);
+            Glide.with(this).asBitmap().load(bitmap8).into(imageViewV2);
+            Glide.with(this).asBitmap().load(bitmap9).into(imageViewV3);
+            Glide.with(this).asBitmap().load(bitmap10).into(imageViewV4);
+            Glide.with(this).asBitmap().load(bitmap11).into(imageViewV5);
+            Glide.with(this).asBitmap().load(bitmap12).into(imageViewV6);
 
 
             /*imageViewLead1.setRotation(imageViewLead1.getRotation() + 360);
