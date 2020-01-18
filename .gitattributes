@@ -1,2 +1,3 @@
 *.tflite filter=lfs diff=lfs merge=lfs -text
 *.apk filter=lfs diff=lfs merge=lfs -text
+[[:space:]]app/build/outputs/apk/debug/app-debug.apk filter=lfs diff=lfs merge=lfs -text
