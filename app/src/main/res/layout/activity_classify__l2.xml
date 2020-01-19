@@ -6,7 +6,7 @@
     tools:context=".ui.Classify.Classify_L2">
 
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -300,7 +300,6 @@
                 android:layout_width="108dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10dp"
                 android:background="@drawable/button"
                 android:text="CATEGORIZE"
                 android:textAllCaps="false"
@@ -345,5 +344,5 @@
                 android:textSize="15dp" />
 
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 </RelativeLayout>
