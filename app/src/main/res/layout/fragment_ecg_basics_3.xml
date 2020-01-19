@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ecg_basic_3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ecg_basics_3"
+        android:gravity="bottom|end">
+
+        <Button
+            android:id="@+id/basics_3_next_button"
+            android:layout_width="150dp"
+            android:layout_height="43dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/ic_login_button_background"
+            android:text="@string/next"
+            android:textColor="#fff" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

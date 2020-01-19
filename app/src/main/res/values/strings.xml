@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Hearthmia</string>
+    <string name="login_hint_email">E-mail Address</string>
+    <string name="login_hint_password">Password</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_ecg_analysis">ECG</string>
+    <string name="ecg_next1">Next</string>
+    <string name="ecg_title">ECG SIGNUP</string>
+    <string name="image_capture">Image Capture</string>
+    <string name="user_name">username</string>
+    <string name="hearthmia_text">
+        HearthMia Technology is a Philippines-based company founded by a team of Computer Engineering students on June 2019,
+        which aims to develop a swift, inexpensive, and point-of-care modern-day solutions enabled with Artificial Intelligence (AI)
+        in detecting irregular heart rhythms that can aid doctors for a more reliable diagnosis of irregular heart rhythms,
+        also known as arrhythmias.
+    </string>
+    <string name="the_company">The Company</string>
+    <string name="next">Next</string>
+
+</resources>
