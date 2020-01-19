@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
@@ -56,9 +57,9 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             imageUri7, imageUri8, imageUri9, imageUri10, imageUri11, imageUri12,
             dest_1, dest_2, dest_3, dest_4, dest_5, dest_6,
             dest_7, dest_8, dest_9, dest_10, dest_11, dest_12;
-
     //database store
     StorageReference mStorageRef;
+    private ChooseViewModel chooseViewModel;
     // button for each available classifier
     private Button buttonLead1, buttonLead2, buttonLead3, buttonAvR, buttonAvL,
             buttonAvF, buttonV1, buttonV2, buttonV3, buttonV4, buttonV5, buttonV6;
@@ -85,6 +86,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_model);
+
+        chooseViewModel = ViewModelProviders.of(this).get(ChooseViewModel.class);
 
         //storage reference
         mStorageRef = FirebaseStorage.getInstance().getReference("Images");
@@ -274,6 +277,7 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
 
 
     }
+
 
     // opens camera for user
     private void OpenCameraIntent1() {
