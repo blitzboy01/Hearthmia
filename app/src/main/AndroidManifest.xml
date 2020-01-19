@@ -21,9 +21,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.Login.ActivityLogin"></activity>
-        <activity android:name=".ui.Signup.ActivitySignUp" />
-        <activity android:name=".ui.Navigation.ActivityUser">
+        <activity
+            android:name=".ui.Login.ActivityLogin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.Signup.ActivitySignUp"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.Navigation.ActivityUser"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +40,9 @@
         <activity
             android:name="com.soundcloud.android.crop.CropImageActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.soumio.inceptiontutorial.ui.Analyze.ChooseModel" />
+        <activity
+            android:name="com.soumio.inceptiontutorial.ui.Analyze.ChooseModel"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

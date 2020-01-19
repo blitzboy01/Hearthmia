@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
 
         val btnHelp: ImageButton = root.findViewById(R.id.help_button)
         btnHelp.setOnClickListener {
-            it.findNavController().navigate(R.id.action_nav_home_to_nav_help)
+            it.findNavController().navigate(R.id.action_nav_home_to_nav_help_instruction)
 
         }
 
