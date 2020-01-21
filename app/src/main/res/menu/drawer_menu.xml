@@ -13,7 +13,7 @@
             android:icon="@drawable/ic_profile"
             android:title="Profile" />
         <item
-            android:id="@+id/nav_ecg_capture"
+            android:id="@+id/nav_analyze"
             android:icon="@drawable/heart"
             android:title="ECG" />
 

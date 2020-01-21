@@ -1,5 +1,3 @@
 package com.soumio.inceptiontutorial.model
 
-class History {
-
-}
+class History

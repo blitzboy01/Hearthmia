@@ -33,7 +33,7 @@
         android:id="@+id/nav_help_2"
         android:name="com.soumio.inceptiontutorial.ui.Help.help_2.HelpFragment2"
         android:label="Help 2"
-        tools:layout="@layout/fragment_help_2" >
+        tools:layout="@layout/fragment_help_2">
         <action
             android:id="@+id/action_nav_help_2_to_nav_help_3"
             app:destination="@id/nav_help_3" />
@@ -43,7 +43,7 @@
         android:id="@+id/nav_help_3"
         android:name="com.soumio.inceptiontutorial.ui.Help.help_3.HelpFragment3"
         android:label="Help 3"
-        tools:layout="@layout/fragment_help_3" >
+        tools:layout="@layout/fragment_help_3">
         <action
             android:id="@+id/action_nav_help_3_to_nav_help_4"
             app:destination="@id/nav_help_4" />
@@ -53,7 +53,7 @@
         android:id="@+id/nav_help_4"
         android:name="com.soumio.inceptiontutorial.ui.Help.help_4.HelpFragment4"
         android:label="Help 4"
-        tools:layout="@layout/fragment_help_4" >
+        tools:layout="@layout/fragment_help_4">
         <action
             android:id="@+id/action_nav_help_4_to_nav_help_5"
             app:destination="@id/nav_help_5" />
@@ -63,7 +63,7 @@
         android:id="@+id/nav_help_5"
         android:name="com.soumio.inceptiontutorial.ui.Help.help_5.HelpFragment5"
         android:label="Help 5"
-        tools:layout="@layout/fragment_help_5" >
+        tools:layout="@layout/fragment_help_5">
         <action
             android:id="@+id/action_nav_help_5_to_nav_warning"
             app:destination="@id/nav_warning" />
@@ -73,7 +73,7 @@
         android:id="@+id/nav_help_instruction"
         android:name="com.soumio.inceptiontutorial.ui.Help.help_instruction.HelpInstructionFragment"
         android:label="Instruction"
-        tools:layout="@layout/fragment_instruction" >
+        tools:layout="@layout/fragment_instruction">
         <action
             android:id="@+id/action_nav_help_instruction_to_nav_help"
             app:destination="@id/nav_help" />
@@ -89,7 +89,7 @@
         android:id="@+id/nav_warning"
         android:name="com.soumio.inceptiontutorial.ui.Help.warning.HelpWarning"
         android:label="Warning"
-        tools:layout="@layout/fragment_warning" >
+        tools:layout="@layout/fragment_warning">
         <action
             android:id="@+id/action_nav_warning_to_nav_help_disclaimer"
             app:destination="@id/nav_help_disclaimer" />
@@ -136,8 +136,8 @@
             android:id="@+id/action_nav_home_to_nav_help_instruction"
             app:destination="@id/nav_help_instruction" />
     </fragment>
-    <fragment
-        android:id="@+id/nav_analyze"
+    <activity
+        android:id="@id/nav_analyze"
         android:name="com.soumio.inceptiontutorial.ui.Analyze.ChooseModel"
         android:label="Please Insert 12-Lead Here"
         tools:layout="@layout/activity_choose_model" />
@@ -211,4 +211,5 @@
         android:name="com.soumio.inceptiontutorial.ui.About.AboutFragment"
         android:label="About"
         tools:layout="@layout/fragment_about" />
+
 </navigation>
