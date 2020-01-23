@@ -53,6 +53,9 @@ class ActivityUser : AppCompatActivity() /*NavigationView.OnNavigationItemSelect
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+/*    private fun configureDrawerStateListener(){
+        psMainDrawerLayout
+    }*/
 
     /*  override fun onNavigationItemSelected(item: MenuItem): Boolean {
           val id = item.itemId

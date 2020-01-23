@@ -17,8 +17,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
@@ -86,6 +88,13 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_model);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        toolbar.setNavigationOnClickListener(view -> {
+            Intent intent = new Intent(this, ActivityUser.class);
+            startActivity(intent);
+        });
+
         //storage reference
         mStorageRef = FirebaseStorage.getInstance().getReference("Images");
 
@@ -139,7 +148,7 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
         imageViewV5 = findViewById(R.id.V5_image_view);
         imageViewV6 = findViewById(R.id.V6_image_view);
 
-        back_img = findViewById(R.id.Mainback);
+//        back_img = findViewById(R.id.Mainback);
 
         inceptionFloat2 = findViewById(R.id.inception_float2);
 
@@ -158,6 +167,7 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
         buttonV4.setOnClickListener(this);
         buttonV5.setOnClickListener(this);
         buttonV6.setOnClickListener(this);
+
 
     }
 
@@ -265,12 +275,12 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
                 Toast.makeText(this, "Cameras are not working, please try again!", Toast.LENGTH_SHORT).show();
 
         }
-        back_img = findViewById(R.id.Mainback);
+        /*back_img = findViewById(R.id.Mainback);
         back_img.setOnClickListener(view -> {
             Intent login = new Intent(this, ActivityUser.class);
             startActivity(login);
 
-        });
+        });*/
 
 
     }
@@ -470,6 +480,7 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
 
     // checks that the user has allowed all the required permission of read and write and camera. If not, notify the user and close the application
     @Override
+
     public void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permissions, @NonNull final int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSION) {

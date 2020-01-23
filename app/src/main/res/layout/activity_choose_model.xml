@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scroller"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/background1"
     android:fillViewport="true"
-    android:paddingTop="12dp"
-    android:paddingBottom="20dp"
-    android:scrollbarStyle="outsideOverlay">
+    android:scrollbarStyle="insideOverlay">
 
 
     <!--<TextView
@@ -23,29 +20,52 @@
         android:textColor="#3F51B5"
         android:textSize="20sp"
         android:textStyle="bold" />-->
-
-    <ImageView
-        android:id="@+id/Mainback"
-        android:layout_width="54dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="80dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:onClick="onClick"
-        android:src="@drawable/arrowtoleft" />
-
-    <ImageView
-        android:id="@+id/upload_img"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:layout_marginTop="120dp"
+        android:layout_height="175dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/upload_ecg" />
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="58dp"
+            app:collapsedTitleGravity="center"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:titleEnabled="false"
+            app:toolbarId="@id/toolbar">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="end|center"
+                app:layout_collapseMode="pin"
+                app:menu="@menu/drawer_menu"
+                app:navigationIcon="@drawable/ic_back_button" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/upload_ecg"
+                app:layout_collapseMode="parallax" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/upload_img">
+        android:layout_below="@id/app_bar"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +79,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -67,7 +87,7 @@
                 android:layout_width="181dp"
                 android:layout_height="64dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/lead_1_button"
+                android:background="@drawable/ic_lead_button"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <ImageView
@@ -76,7 +96,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
 
@@ -85,7 +105,7 @@
                 android:layout_width="181dp"
                 android:layout_height="64dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/lead_2_button"
+                android:background="@drawable/ic_lead_ii_button"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <ImageView
@@ -94,7 +114,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -111,7 +131,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -128,7 +148,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -145,7 +165,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -162,7 +182,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -179,7 +199,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -196,7 +216,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -213,7 +233,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -230,7 +250,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -247,7 +267,7 @@
                 android:layout_height="150dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
-                android:background="@drawable/imageviewlead1"
+                android:background="@drawable/image_view_lead"
                 android:rotation="360" />
 
             <Button
@@ -308,4 +328,4 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
