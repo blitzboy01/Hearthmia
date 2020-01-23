@@ -1,3 +1,0 @@
-normal
-irregular
-invalid
