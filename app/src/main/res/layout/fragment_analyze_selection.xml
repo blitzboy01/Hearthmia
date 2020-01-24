@@ -5,32 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    android:scrollbarStyle="insideOverlay">
+    android:orientation="vertical">
 
-
-    <androidx.core.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:gravity="center|center_horizontal">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewHistory"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:overScrollMode="never"
                 app:layoutManager="GridLayoutManager"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:itemCount="20"
-                tools:listitem="@layout/item_history"
-                tools:spanCount="1" />
+                app:spanCount="2"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_selection" />
 
-        </RelativeLayout>
-    </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
