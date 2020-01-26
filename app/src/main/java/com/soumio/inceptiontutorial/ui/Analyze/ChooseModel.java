@@ -20,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.widget.NestedScrollView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
@@ -28,7 +27,7 @@ import com.google.firebase.storage.StorageReference;
 import com.soumio.inceptiontutorial.R;
 import com.soumio.inceptiontutorial.ui.Classify.Classify_L2;
 import com.soumio.inceptiontutorial.ui.Navigation.ActivityUser;
-import com.soundcloud.android.crop.Crop;
+import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
 import java.io.IOException;
@@ -500,8 +499,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri;
                 dest_1 = Uri.fromFile(new File(getCacheDir(), "cropped"));
-                Crop.of(source_uri, dest_1)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_1)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -510,8 +509,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri2;
                 dest_2 = Uri.fromFile(new File(getCacheDir(), "cropped2"));
-                Crop.of(source_uri, dest_2)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_2)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -520,8 +519,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri3;
                 dest_3 = Uri.fromFile(new File(getCacheDir(), "cropped3"));
-                Crop.of(source_uri, dest_3)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_3)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -530,8 +529,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri4;
                 dest_4 = Uri.fromFile(new File(getCacheDir(), "cropped4"));
-                Crop.of(source_uri, dest_4)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_4)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -540,8 +539,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri5;
                 dest_5 = Uri.fromFile(new File(getCacheDir(), "cropped5"));
-                Crop.of(source_uri, dest_5)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_5)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -550,8 +549,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri6;
                 dest_6 = Uri.fromFile(new File(getCacheDir(), "cropped6"));
-                Crop.of(source_uri, dest_6)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_6)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -561,8 +560,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri7;
                 dest_7 = Uri.fromFile(new File(getCacheDir(), "cropped7"));
-                Crop.of(source_uri, dest_7)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_7)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -571,8 +570,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri8;
                 dest_8 = Uri.fromFile(new File(getCacheDir(), "cropped8"));
-                Crop.of(source_uri, dest_8)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_8)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -581,8 +580,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri9;
                 dest_9 = Uri.fromFile(new File(getCacheDir(), "cropped9"));
-                Crop.of(source_uri, dest_9)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_9)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -590,10 +589,11 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
         } else if (requestCode == REQUEST_IMAGE10) {
 
             try {
+
                 Uri source_uri = imageUri10;
                 dest_10 = Uri.fromFile(new File(getCacheDir(), "cropped10"));
-                Crop.of(source_uri, dest_10)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_10)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -602,8 +602,8 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri11;
                 dest_11 = Uri.fromFile(new File(getCacheDir(), "cropped11"));
-                Crop.of(source_uri, dest_11)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_11)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -612,13 +612,13 @@ public class ChooseModel extends AppCompatActivity implements View.OnClickListen
             try {
                 Uri source_uri = imageUri12;
                 dest_12 = Uri.fromFile(new File(getCacheDir(), "cropped12"));
-                Crop.of(source_uri, dest_12)
-                        .withMaxSize(612, 229)
+                UCrop.of(source_uri, dest_12)
+                        .withMaxResultSize(612, 229)
                         .start(this);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (requestCode == Crop.REQUEST_CROP && resultCode == RESULT_OK) {
+        } else if (requestCode == UCrop.REQUEST_CROP && resultCode == RESULT_OK) {
             try {
                 if (dest_1 != null) {
 
